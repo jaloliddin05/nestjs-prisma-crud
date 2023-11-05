@@ -2,4 +2,6 @@
 model SubCategory {
   id String @id @default(uuid())
   title  String?
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 }

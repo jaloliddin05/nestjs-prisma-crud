@@ -13,6 +13,7 @@ datasource db {
 model Category {
   id String @id @default(uuid())
   title String?
+  subCategories SubCategory[]
 }
 model Order {
   id String @id @default(uuid())
@@ -29,6 +30,8 @@ model Product {
 model SubCategory {
   id String @id @default(uuid())
   title  String?
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 }
 model User {
   id String @id @default(uuid())
