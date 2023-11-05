@@ -13,7 +13,7 @@ import { OrderModule } from './modules/order/order.module';
     PrismaModule,
     ProductModule,
     CategoryModule,
-    SubCategoryModule,
+    // SubCategoryModule,
     OrderModule,
   ],
 })

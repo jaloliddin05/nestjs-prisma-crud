@@ -4,4 +4,6 @@ model Product {
   name  String?
   imgUrl String?
   price Float?
+  subCategory SubCategory @relation(fields:[subCategoryId],references:[id])
+  subCategoryId String
 }

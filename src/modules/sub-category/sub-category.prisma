@@ -4,4 +4,5 @@ model SubCategory {
   title  String?
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
+  products Product[]
 }

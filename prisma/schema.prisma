@@ -26,12 +26,15 @@ model Product {
   name  String?
   imgUrl String?
   price Float?
+  subCategory SubCategory @relation(fields:[subCategoryId],references:[id])
+  subCategoryId String
 }
 model SubCategory {
   id String @id @default(uuid())
   title  String?
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
+  products Product[]
 }
 model User {
   id String @id @default(uuid())
