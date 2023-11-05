@@ -1,0 +1,5 @@
+
+model SubCategory {
+  id String @id @default(uuid())
+  title  String?
+}

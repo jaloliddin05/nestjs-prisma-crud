@@ -1,0 +1,7 @@
+
+model Product {
+  id String @id @default(uuid())
+  name  String?
+  imgUrl String?
+  price Float?
+}

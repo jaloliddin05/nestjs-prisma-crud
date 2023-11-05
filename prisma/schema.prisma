@@ -10,6 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Category {
+  id String @id @default(uuid())
+  title String?
+}
+model Order {
+  id String @id @default(uuid())
+  name  String?
+  phone String?
+  count Int?
+}
+model Product {
+  id String @id @default(uuid())
+  name  String?
+  imgUrl String?
+  price Float?
+}
+model SubCategory {
+  id String @id @default(uuid())
+  title  String?
+}
 model User {
   id String @id @default(uuid())
   username String @unique

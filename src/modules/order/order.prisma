@@ -1,0 +1,7 @@
+
+model Order {
+  id String @id @default(uuid())
+  name  String?
+  phone String?
+  count Int?
+}
