@@ -6,4 +6,5 @@ model Product {
   price Float?
   subCategory SubCategory @relation(fields:[subCategoryId],references:[id])
   subCategoryId String
+  orders Order[]
 }
