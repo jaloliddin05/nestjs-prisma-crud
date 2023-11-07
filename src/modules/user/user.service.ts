@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '../_prisma/prisma.service';
+import { User } from './entities/user.entity';
+import { hashPassword } from 'src/infra/helper';
 
 @Injectable()
 export class UserService {
@@ -10,7 +12,8 @@ export class UserService {
   ){}
 
   async create(data: CreateUserDto) {
-    return await this.prismaService.user.create({data})
+    const password = await hashPassword(data.password)
+    return await this.prismaService.user.create({data:{...data,password}})
   }
 
   async findAll() {
@@ -19,6 +22,14 @@ export class UserService {
 
   async findOne(id: string) {
     return await this.prismaService.user.findUnique({where:{id}})
+  }
+
+  async findByUsername(username:string):Promise<User>{
+    return await this.prismaService.user.findUnique({
+      where:{
+        username
+      }
+    })
   }
 
   async update(id: string, data: UpdateUserDto) {
